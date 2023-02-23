@@ -56,7 +56,10 @@ int main()
         int ch;
         cin>>ch;
         string plain,key,output;
-        cin>>plain>>key;
+        cout<<"Enter text: ";
+        cin>>plain;
+        cout<<"Enter Key: ";
+        cin>>key;
         if(ch==1){
             output = encryption(plain,key);
             cout<<"Encrypted Text: "<<output<<endl;
