@@ -40,6 +40,9 @@ void get_index(char ch,int &c,int &d)
 string encryption(string plainText)
 {
     string cipherText;
+    for(int i=0;i<plainText.size();i++){
+        if(plainText[i]=='J')plainText[i]='I';
+    }
     for(int i=0;i<plainText.size();){
         char a,b;
         int ax,ay,bx,by;
@@ -124,6 +127,7 @@ int main()
     string plainText,key,cipherText;
     cout<<"Enter Plain Text: ";
     cin>>plainText;
+    //getline(cin,plainText);
     cout<<"Enter Key: ";
     cin>>key;
     gen_Table(key);
@@ -132,6 +136,7 @@ int main()
         for(int j=0;j<5;j++)cout<<matrix[i][j]<<" ";
         cout<<endl;
     }
+    transform(plainText.begin(),plainText.end(),plainText.begin(),::toupper);
     string cipher = encryption(plainText);
     cout<<"Encrypted : "<<cipher<<endl;
     string plain = decryption(cipher);
