@@ -2,18 +2,18 @@
 using namespace std;
 
 int keyMatrix[3][3],cipherMatrix[3],messageMatrix[3],inverseKeyMatrix[3][3],plainMatrix[3];
-int x,y;
-int gcd(int a,int b)
+
+int gcd(int a,int b,int *x,int *y)
 {
     if(b==0){
-        x = 1;
-        y = 0;
+        *x = 1;
+        *y = 0;
         return a;
     }
     int x1,y1;
-    int gc = gcd(b,a%b);
-    x = y1;
-    y = x1 - (a/b)*y1;
+    int gc = gcd(b,a%b,&x1,&y1);
+    *x = y1;
+    *y = x1 - (a/b)*y1;
     return gc;
 }
 
@@ -62,7 +62,8 @@ bool find_inverse_2(){
         cout<<"Inverse is not possible: "<<endl;
         return false;
     }
-    int gc = gcd(det,26);
+    int x,y;
+    int gc = gcd(det,26,&x,&y);
     if(gc!=1){
         cout<<"Determinant: "<<det<<endl;
         cout<<"Gcd is not 1"<<endl;
@@ -82,7 +83,8 @@ bool find_inverse_3(){
         cout << "Matrix is singular and has no inverse." << endl;
         return false;
     }
-    int gc = gcd(det,26);
+    int x,y;
+    int gc = gcd(det,26,&x,&y);
     if(gc!=1){
         cout<<"Determinant: "<<det<<endl;
         cout<<"Gcd is not 1"<<endl;
