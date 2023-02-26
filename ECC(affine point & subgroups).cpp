@@ -50,9 +50,9 @@ vector<Point> gen_affine_point()
     return ret;
 }
 
-Point doubling(Point x,int fs=1)
+Point doubling(Point x)
 {
-    if(x.x==0&&fs==1) return {-1,-1};
+    if(x.y==0) return {-1,-1};
     long long s = ((((3*x.x*x.x + a) * ex_gcd(2*x.y,p)[0]) % p)+p)%p;
 
     long long x2 = (((s*s)%p) -((2*x.x)%p) + p)%p;
@@ -62,7 +62,7 @@ Point doubling(Point x,int fs=1)
 
 Point addition(Point x, Point y)
 {
-    if(x.x==y.x && x.y==y.y) return doubling(x,0);
+    if(x.x==y.x && x.y==y.y) return doubling(x);
     if(y.x-x.x==0) return {-1,-1};
     long long s = ((((y.y - x.y)*ex_gcd(((y.x-x.x)%p +p)%p,p)[0])%p)+p)%p;
 
