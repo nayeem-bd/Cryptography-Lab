@@ -143,10 +143,17 @@ int main()
 
     cout<<"Enter [ p a b ] of the Elliptic Curve Ep(a,b): ";
     cin>>p>>a>>b;
+    auto affine_p = gen_affine_point();
+    cout<<"Affine points:\n";
+    for(auto ii:affine_p){
+        cout<<ii.x<<" "<<ii.y<<endl;
+    }
+
     cout<<"Enter [ x y ] of the Generation Point: ";
     cin>>G.x>>G.y;
 
     auto sub_G = gen_subgroup(G);
+    cout<<"Sub Group:\n";
     for(auto ii:sub_G){
         cout<<ii.x<<" "<<ii.y<<endl;
     }
@@ -159,6 +166,7 @@ int main()
 
     string source,decrypted_source;
     vector<pair<Point,Point>> chifer;
+
 
     ll PRa = 3, PRb = 10;
 //    cout<<"Enter Private Key of \'A\': ";
@@ -190,6 +198,7 @@ int main()
     decrypted_source = decrypt(chifer,PRb);
 
     cout<<"\n"<<"Decrypted Massage: "<<decrypted_source<<"\n\n";
+
 
     return 0;
 
