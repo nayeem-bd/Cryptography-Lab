@@ -63,6 +63,8 @@ Point addition(Point x, Point y)
 {
     if(x.x==y.x && x.y==y.y) return doubling(x);
     if(y.x-x.x==0) return {-1,-1};
+    if(x.x==-1 && x.y==-1) return y;
+    if(y.x==-1 && y.y==-1) return x;
     long long s = ((((y.y - x.y)*ex_gcd(((y.x-x.x)%p +p)%p,p)[0])%p)+p)%p;
 
     long long x2 = ((((s*s)-x.x-y.x)%p)+p)%p;
@@ -145,6 +147,9 @@ int main()
     cin>>G.x>>G.y;
 
     auto sub_G = gen_subgroup(G);
+    for(auto ii:sub_G){
+        cout<<ii.x<<" "<<ii.y<<endl;
+    }
 
 //    if(sub_G.size()<26)
 //    {
@@ -154,7 +159,6 @@ int main()
 
     string source,decrypted_source;
     vector<pair<Point,Point>> chifer;
-
 
     ll PRa = 3, PRb = 10;
 //    cout<<"Enter Private Key of \'A\': ";
@@ -187,8 +191,6 @@ int main()
 
     cout<<"\n"<<"Decrypted Massage: "<<decrypted_source<<"\n\n";
 
-
     return 0;
 
 }
-
