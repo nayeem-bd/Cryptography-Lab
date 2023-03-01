@@ -34,17 +34,23 @@ int main()
         int ch;
         cin>>ch;
         string plain,key,output;
-        cout<<"Enter text: ";
-        cin>>plain;
-        cout<<"Enter Key: ";
-        cin>>key;
-        transform(plain.begin(),plain.end(),plain.begin(),::toupper);
-        transform(key.begin(),key.end(),key.begin(),::toupper);
         if(ch==1){
+            cout<<"Enter text: ";
+            cin>>plain;
+            cout<<"Enter Key: ";
+            cin>>key;
+            transform(plain.begin(),plain.end(),plain.begin(),::toupper);
+            transform(key.begin(),key.end(),key.begin(),::toupper);
             output = encryption(plain,key);
             cout<<"Encrypted Text: "<<output<<endl;
         }
         else if(ch==2){
+            cout<<"Enter text: ";
+            cin>>plain;
+            cout<<"Enter Key: ";
+            cin>>key;
+            transform(plain.begin(),plain.end(),plain.begin(),::toupper);
+            transform(key.begin(),key.end(),key.begin(),::toupper);
             output = decryption(plain,key);
             cout<<"Decrypted Text : "<<output<<endl;
         }
