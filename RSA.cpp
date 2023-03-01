@@ -71,9 +71,9 @@ int main()
         }
         d = ((x%phi)+phi)%phi;
         cout<<"Modular Inverse "<<d<<endl;
-        cout<<"Private Key "<<e<<" "<<n<<endl;
+        cout<<"Public key "<<e<<" "<<n<<endl;
+        cout<<"Private Key "<<d<<" "<<n<<endl;
         encryption(e,n);
-        cout<<"Public key "<<d<<" "<<n<<endl;
         decryption(d,n);
         break;
     //    ll plallext = modPower(cipertext,d,n);
